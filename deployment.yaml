@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insurify
+  namespace: se2324team15
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insurify
+  template:
+    metadata:
+      labels:
+        app: insurify
+    spec:
+      containers:
+        - name: backend
+          image: repository.hal.davecutting.uk:5005/40299897/insurify-backend:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "1"
+              memory: "282.29Mi"  # Set memory limit to 282.29 MiB for the backend
+            requests:
+              cpu: "0.5"
+              memory: "256Mi"
